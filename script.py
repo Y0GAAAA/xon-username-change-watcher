@@ -9,7 +9,7 @@ URL = 'http://xdf.teichisma.info/rating'
 
 response = requests.get(URL)
 if not response.ok:
-    print("error fetching player ratings:", response.reason)
+    raise Exception(f"could not fetch player ratings: {response.reason}")
 
 parser = BeautifulSoup(response.text, 'html.parser')
 rows = parser.find_all('tr')
